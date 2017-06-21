@@ -18,8 +18,8 @@ PlayingBoard::PlayingBoard(QWidget *wid)
     Timer = new QBasicTimer;
     Timer->start(timeoutTime(), this);
 
-    this->setMaximumSize(260,320);
-    this->setMinimumSize(260,320);
+    this->setMaximumSize(260,300);
+    this->setMinimumSize(260,300);
 }
 PlayingBoard::~PlayingBoard() {
     delete Shape;
@@ -44,13 +44,34 @@ void PlayingBoard::resizeEvent(QResizeEvent *event) {
 }
 
 void PlayingBoard::OneLineDown() {
-
+    moveByY +=20;
     qDebug() << moveByY << this->size().height();
-    if (moveByY+20 <= this->size().height()-20) {
-        moveByY+=20;
+    if (moveByY >= this->size().height()-40) {
+        moveByY -=20;
         this->repaint();
     } else {
-        moveByY-=20;
+        this->repaint();
+    }
+
+}
+void PlayingBoard::OneColumnRight() {
+    moveByX+=20;
+    qDebug() <<moveByX << this->size().width();
+    if (moveByX >= this->size().width()-140) {
+        moveByX -=20;
+        this->repaint();
+    } else {
+        this->repaint();
+    }
+}
+
+void PlayingBoard::OneColumnLeft() {
+    moveByX-=20;
+    qDebug() <<moveByX << this->size().width();
+    if (moveByX <= this->size().width()-400) {
+        moveByX +=20;
+        this->repaint();
+    } else {
         this->repaint();
     }
 }
@@ -58,11 +79,9 @@ void PlayingBoard::OneLineDown() {
 
 void PlayingBoard::keyPressEvent(QKeyEvent *event) {
     if(event->key() == Qt::Key_Right) {
-        moveByX+=20;
-        this->repaint();
+        OneColumnRight();
     } else if(event->key() == Qt::Key_Left) {
-        moveByX-=20;
-        this->repaint();
+        OneColumnLeft();
     } else if (event->key() == Qt::Key_Up) {
         //moveByY-=20;
         //this->repaint();
