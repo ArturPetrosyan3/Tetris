@@ -63,7 +63,7 @@ void PlayingBoard::keyPressEvent(QKeyEvent *event) {
         moveByY-=20;
         this->repaint();
     } else if (event->key() == Qt::Key_Down) {
-        //OneLineDown();
+        OneLineDown();
     }
 }
 void PlayingBoard::timerEvent(QTimerEvent *event)
