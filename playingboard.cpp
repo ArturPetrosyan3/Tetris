@@ -3,6 +3,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QVector>
+#include <QSizePolicy>
 PlayingBoard::PlayingBoard(QWidget *wid)
 {
     setFocusPolicy(Qt::StrongFocus);
@@ -16,6 +17,9 @@ PlayingBoard::PlayingBoard(QWidget *wid)
     Level =1;
     Timer = new QBasicTimer;
     Timer->start(timeoutTime(), this);
+
+    this->setMaximumSize(260,320);
+    this->setMinimumSize(260,320);
 }
 PlayingBoard::~PlayingBoard() {
     delete Shape;
@@ -60,10 +64,10 @@ void PlayingBoard::keyPressEvent(QKeyEvent *event) {
         moveByX-=20;
         this->repaint();
     } else if (event->key() == Qt::Key_Up) {
-        moveByY-=20;
-        this->repaint();
+        //moveByY-=20;
+        //this->repaint();
     } else if (event->key() == Qt::Key_Down) {
-        OneLineDown();
+        //OneLineDown();
     }
 }
 void PlayingBoard::timerEvent(QTimerEvent *event)

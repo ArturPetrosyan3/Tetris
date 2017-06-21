@@ -9,6 +9,7 @@ TetrisWidget::TetrisWidget()
     board->setFocus();
     Layout->addWidget(board,0,0);
     setLayout(Layout);
+    this->setMaximumSize(260,320);
 }
 
 
