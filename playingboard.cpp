@@ -60,8 +60,8 @@ void PlayingBoard::keyPressEvent(QKeyEvent *event) {
         moveByX-=20;
         this->repaint();
     } else if (event->key() == Qt::Key_Up) {
-        //moveByY-=20;
-        //this->repaint();
+        moveByY-=20;
+        this->repaint();
     } else if (event->key() == Qt::Key_Down) {
         //OneLineDown();
     }
