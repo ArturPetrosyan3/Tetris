@@ -14,7 +14,8 @@ public:
     void OneLineDown();
     void OneColumnRight();
     void OneColumnLeft();
-
+    int GetRandomNum();
+    void setRandomShape();
     int timeoutTime() {
         return 1000 / (1 + Level);
     }
@@ -25,6 +26,8 @@ protected:
 private:
     QBasicTimer *Timer;
     TetrisShapes *Shape;
+    Cube ob1;
+    Line ob2;
     int Height;
     int Width;
     int x;

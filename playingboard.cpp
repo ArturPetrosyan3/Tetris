@@ -8,8 +8,8 @@ PlayingBoard::PlayingBoard(QWidget *wid)
 {
     setFocusPolicy(Qt::StrongFocus);
 
-    Shape = new Cube();
-    Shape = new Line();
+    //Shape = new Cube();
+    //Shape = new Line();
     this->setBackgroundRole(QPalette::Base);
     this->setStyleSheet("background-color:gray;");
     moveByX = 0;
@@ -22,12 +22,30 @@ PlayingBoard::PlayingBoard(QWidget *wid)
     this->setMinimumSize(260,300);
 }
 PlayingBoard::~PlayingBoard() {
-    delete Shape;
+    //delete Shape; //Crashes *****
+}
+int PlayingBoard::GetRandomNum() {
+    int RandNum = qrand() % 2 + 1;
+    return RandNum;
+}
+
+void PlayingBoard::setRandomShape()
+{
+
 }
 
 void PlayingBoard::paintEvent(QPaintEvent *event) {
-
-    Shape->draw(this,NewSizeX,NewSizeY,x+moveByX,y+moveByY);
+    int ShapeID = 1;
+    if(moveByY >= 240) {
+        ShapeID = 2;
+    }//GetRandomNum();
+    if (ShapeID == 1) {
+        Shape = &ob1;
+        Shape->draw(this,NewSizeX,NewSizeY,x+moveByX,y+moveByY);
+    } else if (ShapeID == 2) {
+        Shape = &ob2;
+        Shape->draw(this,NewSizeX,NewSizeY,x+moveByX,y+moveByY);
+    }
 }
 
 double PlayingBoard::GetX() {

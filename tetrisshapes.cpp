@@ -18,9 +18,6 @@ void Line::draw(QWidget *WidPointer, int NewSizeX,int NewSizeY, int x,int y)
 {
     QPainter painter(WidPointer);
     QPolygon poligon;
-    poligon << QPoint(x-NewSizeX,y) << QPoint(x+20+NewSizeX,y) << QPoint(x+20+NewSizeX,y+20+NewSizeX) << QPoint(x-NewSizeX,y+20+NewSizeX);
+    poligon << QPoint(x-NewSizeX,y) << QPoint(x+50+NewSizeX,y) << QPoint(x+50+NewSizeX,y+20+NewSizeX) << QPoint(x-NewSizeX,y+20+NewSizeX);
     painter.drawPolygon(poligon);
 }
-
-
-
