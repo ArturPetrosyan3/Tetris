@@ -12,6 +12,9 @@ public:
     void paintEvent(QPaintEvent *event);
     double GetX();
     void OneLineDown();
+    void OneColumnRight();
+    void OneColumnLeft();
+
     int timeoutTime() {
         return 1000 / (1 + Level);
     }
